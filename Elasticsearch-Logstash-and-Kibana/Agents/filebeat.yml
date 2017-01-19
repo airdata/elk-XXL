@@ -1,0 +1,25 @@
+filebeat:
+ prospectors:
+ -
+ paths:
+ - /var/log/nginx/access.log
+ input_type: access
+ document_type: nginx
+ -
+ paths:
+ - /var/log/nginx/error.log
+ input_type: error
+ document_type: nginx
+ 
+-
+ paths:
+ - /var/log/syslog
+ input_type: syslog
+ document_type: linux
+ 
+registry_file: /home/fb_registry.filebeat
+ 
+output:
+ logstash:
+ hosts: ["logstash:5000"]
+ worker: 1

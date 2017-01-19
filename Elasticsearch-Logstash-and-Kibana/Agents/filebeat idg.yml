@@ -1,0 +1,27 @@
+curl -XPOST 'localhost:9200/_cluster/reroute' -d '{
+    "commands" : [ {
+        "move" :
+            {
+              "index" : "logstash-2016.12.03", "shard" : 0,
+              "from_node" : "node1", "to_node" : "node2"
+            }
+        },
+        {
+          "allocate_replica" : {
+              "index" : "test", "shard" : 1, "node" : "node3"
+          }
+        }
+    ]
+}'
+
+172.31.22.190
+172.31.30.24
+elk-slave
+elk-master
+elk-santech
+
+
+
+
+curl -XPUT 'localhost:9200/logstash-2016.12.03/_settings' \
+    -d '{"index.routing.allocation.disable_allocation": false}'

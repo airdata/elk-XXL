@@ -1,0 +1,713 @@
+{
+  "logstash-2016.12.07" : {
+    "mappings" : {
+      "nginx-access" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "agent" : {
+            "type" : "string"
+          },
+          "auth" : {
+            "type" : "string"
+          },
+          "bytes" : {
+            "type" : "string"
+          },
+          "clientip" : {
+            "type" : "string"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "geoip" : {
+            "properties" : {
+              "city_name" : {
+                "type" : "string"
+              },
+              "continent_code" : {
+                "type" : "string"
+              },
+              "coordinates" : {
+                "type" : "double"
+              },
+              "country_code2" : {
+                "type" : "string"
+              },
+              "country_code3" : {
+                "type" : "string"
+              },
+              "country_name" : {
+                "type" : "string"
+              },
+              "ip" : {
+                "type" : "string"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "location" : {
+                "type" : "double"
+              },
+              "longitude" : {
+                "type" : "double"
+              },
+              "real_region_name" : {
+                "type" : "string"
+              },
+              "region_name" : {
+                "type" : "string"
+              },
+              "timezone" : {
+                "type" : "string"
+              }
+            }
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "httpversion" : {
+            "type" : "string"
+          },
+          "ident" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "request" : {
+            "type" : "string"
+          },
+          "response" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "timestamp" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "verb" : {
+            "type" : "string"
+          }
+        }
+      },
+      "activemq2" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "loglevel" : {
+            "type" : "string"
+          },
+          "logmessage" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "mqtask" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "pid" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "applications" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "HOSTNAME" : {
+            "type" : "string"
+          },
+          "app_name" : {
+            "type" : "string"
+          },
+          "app_port" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "instance_id" : {
+            "type" : "string"
+          },
+          "instance_name" : {
+            "type" : "string"
+          },
+          "level" : {
+            "type" : "string"
+          },
+          "level_value" : {
+            "type" : "long"
+          },
+          "logger_name" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "metric_count" : {
+            "type" : "long"
+          },
+          "metric_duration_unit" : {
+            "type" : "string"
+          },
+          "metric_m1" : {
+            "type" : "double"
+          },
+          "metric_m15" : {
+            "type" : "double"
+          },
+          "metric_m5" : {
+            "type" : "double"
+          },
+          "metric_max" : {
+            "type" : "double"
+          },
+          "metric_mean" : {
+            "type" : "double"
+          },
+          "metric_mean_rate" : {
+            "type" : "double"
+          },
+          "metric_median" : {
+            "type" : "double"
+          },
+          "metric_min" : {
+            "type" : "double"
+          },
+          "metric_name" : {
+            "type" : "string"
+          },
+          "metric_p75" : {
+            "type" : "double"
+          },
+          "metric_p95" : {
+            "type" : "double"
+          },
+          "metric_p98" : {
+            "type" : "double"
+          },
+          "metric_p99" : {
+            "type" : "double"
+          },
+          "metric_p999" : {
+            "type" : "double"
+          },
+          "metric_rate_unit" : {
+            "type" : "string"
+          },
+          "metric_stddev" : {
+            "type" : "double"
+          },
+          "metric_type" : {
+            "type" : "string"
+          },
+          "metric_value" : {
+            "type" : "double"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "thread_name" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "apache-custom" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "auth" : {
+            "type" : "string"
+          },
+          "bytes" : {
+            "type" : "string"
+          },
+          "clientip" : {
+            "type" : "string"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "httpversion" : {
+            "type" : "string"
+          },
+          "ident" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "rawrequest" : {
+            "type" : "string"
+          },
+          "request" : {
+            "type" : "string"
+          },
+          "response" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "timestamp" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "verb" : {
+            "type" : "string"
+          }
+        }
+      },
+      "jenkins" : {
+        "properties" : {
+          "@message" : {
+            "type" : "string"
+          },
+          "@message_type" : {
+            "type" : "string"
+          },
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "apache" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "apache_agent" : {
+            "type" : "string"
+          },
+          "apache_auth" : {
+            "type" : "string"
+          },
+          "apache_bgp" : {
+            "properties" : {
+              "asn" : {
+                "type" : "string"
+              },
+              "number" : {
+                "type" : "string"
+              }
+            }
+          },
+          "apache_bytes" : {
+            "type" : "long"
+          },
+          "apache_client_hostname" : {
+            "type" : "string"
+          },
+          "apache_client_ip" : {
+            "type" : "string"
+          },
+          "apache_extension" : {
+            "type" : "string"
+          },
+          "apache_geoip" : {
+            "properties" : {
+              "area_code" : {
+                "type" : "long"
+              },
+              "city_name" : {
+                "type" : "string"
+              },
+              "continent_code" : {
+                "type" : "string"
+              },
+              "country_code2" : {
+                "type" : "string"
+              },
+              "country_code3" : {
+                "type" : "string"
+              },
+              "country_name" : {
+                "type" : "string"
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "string"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "location" : {
+                "type" : "double"
+              },
+              "longitude" : {
+                "type" : "double"
+              },
+              "postal_code" : {
+                "type" : "string"
+              },
+              "real_region_name" : {
+                "type" : "string"
+              },
+              "region_name" : {
+                "type" : "string"
+              },
+              "timezone" : {
+                "type" : "string"
+              }
+            }
+          },
+          "apache_httpversion" : {
+            "type" : "string"
+          },
+          "apache_ident" : {
+            "type" : "string"
+          },
+          "apache_referrer" : {
+            "type" : "string"
+          },
+          "apache_request" : {
+            "type" : "string"
+          },
+          "apache_response" : {
+            "type" : "long"
+          },
+          "apache_robot" : {
+            "type" : "string"
+          },
+          "apache_timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "apache_useragent" : {
+            "properties" : {
+              "device" : {
+                "type" : "string"
+              },
+              "major" : {
+                "type" : "string"
+              },
+              "minor" : {
+                "type" : "string"
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "os" : {
+                "type" : "string"
+              },
+              "os_name" : {
+                "type" : "string"
+              },
+              "patch" : {
+                "type" : "string"
+              }
+            }
+          },
+          "apache_verb" : {
+            "type" : "string"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "type" : {
+        "properties" : {
+          "“host”" : {
+            "type" : "string",
+            "index" : "not_analyzed",
+            "fields" : {
+              "sub" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "syslog" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "received_at" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "received_from" : {
+            "type" : "string"
+          },
+          "syslog_facility" : {
+            "type" : "string"
+          },
+          "syslog_facility_code" : {
+            "type" : "long"
+          },
+          "syslog_hostname" : {
+            "type" : "string"
+          },
+          "syslog_message" : {
+            "type" : "string"
+          },
+          "syslog_pid" : {
+            "type" : "string"
+          },
+          "syslog_program" : {
+            "type" : "string"
+          },
+          "syslog_severity" : {
+            "type" : "string"
+          },
+          "syslog_severity_code" : {
+            "type" : "long"
+          },
+          "syslog_timestamp" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "apache-error" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "long"
+          },
+          "apache_error_client_ip" : {
+            "type" : "string"
+          },
+          "apache_error_loglevel" : {
+            "type" : "string"
+          },
+          "apache_error_message" : {
+            "type" : "string"
+          },
+          "apache_error_timestamp" : {
+            "type" : "string"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "geoip" : {
+            "properties" : {
+              "area_code" : {
+                "type" : "long"
+              },
+              "city_name" : {
+                "type" : "string"
+              },
+              "continent_code" : {
+                "type" : "string"
+              },
+              "country_code2" : {
+                "type" : "string"
+              },
+              "country_code3" : {
+                "type" : "string"
+              },
+              "country_name" : {
+                "type" : "string"
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "string"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "location" : {
+                "type" : "double"
+              },
+              "longitude" : {
+                "type" : "double"
+              },
+              "postal_code" : {
+                "type" : "string"
+              },
+              "real_region_name" : {
+                "type" : "string"
+              },
+              "region_name" : {
+                "type" : "string"
+              },
+              "timezone" : {
+                "type" : "string"
+              }
+            }
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "timestamp_submitted" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  },
+  "logstash-2016.12.08" : {
+    "mappings" : {
+      "type" : {
+        "properties" : {
+          "“host”" : {
+            "type" : "string",
+            "index" : "not_analyzed",
+            "fields" : {
+              "sub" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "jenkins" : {
+        "properties" : {
+          "@message" : {
+            "type" : "string"
+          },
+          "@message_type" : {
+            "type" : "string"
+          },
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "file" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "offset" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

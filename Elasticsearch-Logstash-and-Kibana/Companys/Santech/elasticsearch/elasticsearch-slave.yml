@@ -1,0 +1,6 @@
+cluster.name: elk-santech
+node.name: "elk-slave"
+network.host: 172.31.30.24
+discovery.zen.ping.unicast.hosts: ["172.31.22.190", "172.31.30.24"]
+discovery.zen.ping.multicast.enabled: false
+bootstrap.mlockall: true

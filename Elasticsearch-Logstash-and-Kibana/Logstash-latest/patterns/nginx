@@ -1,0 +1,13 @@
+#NGUSER %{DATA}
+#NGINXACCESS %{IPORHOST:clientip}:%{POSINT:port} %{NGUSER:ident} %{NGUSER:username} \[%{HTTPDATE:created_at}\] "%{WORD:verb} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:http_code} (?:%{NUMBER:bytes:int}|-) (?:"(?:%{URI:referrer}|-)"|%{QS:referrer}) %{QS:agent}
+#NGINXACCESS %{IPORHOST:clientip}:%{POSINT:port} %{NGUSER:ident} %{NGUSER:username} \[%{HTTPDATE:created_at}\]  "%{WORD:verb} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:http_code} (?:%{NUMBER:bytes:int}|-) (?:"(?:%{URI:referrer}|-)"|%{QS:referrer}) %{QS:agent}
+#NGUSERNAME [a-zA-Z\.\@\-\+_%]+
+#NGUSER %{NGUSERNAME}
+#NGINXACCESS %{IPORHOST:clientip} %{NGUSER:ident} %{NGUSER:auth} \[%{HTTPDATE:timestamp}\] "%{WORD:verb} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:"(?:%{URI:referrer}|-)"|%{QS:referrer}) %{QS:agent}
+#NGINXACCESSLOG %{IPORHOST:remote_addr} - %{USERNAME:remote_user} \[%{HTTPDATE:time_local}\] %{QS:request} %{INT:status} %{INT:body_bytes_sent} %{QS:http_referer} %{QS:http_user_agent}
+#NGINX_ACCESS %{SYSLOGTIMESTAMP:syslog_timestamp}\s*%{SYSLOGHOST:server}\s*%{SYSLOGPROG}:\s*%{IPORHOST:balanced_ip} - - \[%{HTTPDATE}\]\s*"%{WORD:method}\s*%{URIPATHPARAM:request}\s*HTTP/%{NUMBER:http_version}"\s*%{NUMBER:res}\s*%{NUMBER:send_bytes}\s*"(?<referer>.*?)"\s*%{QS:agent}\s*"(?<client_ip>.*?)"\s*%{WORD:unknow}\s*%{QS:cookie}\s*"(?<timestamp>.*?)"
+
+NGUSERNAME [a-zA-Z\.\@\-\+_%]+
+NGUSER %{NGUSERNAME}
+NGINXACCESS %{IPORHOST:clientip} %{NGUSER:ident} %{NGUSER:auth} \[%{HTTPDATE:timestamp}\] "%{WORD:verb} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:"(?:%{URI:referrer}|-)"|%{QS:referrer}) %{QS:agent}
+

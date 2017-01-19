@@ -1,0 +1,13 @@
+# audit.log
+ZMLOGLEVEL %{WORD:level}
+ZMPROCESS %{PROG:process}
+ZMTHREAD %{NONNEGINT:thread}
+ZMPROGRAM \[%{ZMPROCESS}-%{ZMTHREAD}(:%{DATA:program_info})?\]
+ZMCLIENT \[(name=%{DATA:user};)?(mid=%{NUMBER:mid};)?(ip=%{IPORHOST:src_ip};)?(oip=%{IPORHOST:clientip};)?(via=%{DATA:via};)?(ua=%{DATA:user_agent};)?\]
+ZMCOMMAND cmd=%{WORD:command}
+ZMCOMMAND_PARAMS (%{WORD:username_type}=%{DATA:username}(; protocol=%{WORD:protocol})?(; error=%{DATA:error})?(; feature=%{WORD:feature})?(; member=%{DATA:member})?(; status=%{WORD:status})?;)?
+ZMAUDIT %{TIMESTAMP_ISO8601:created_at} %{ZMLOGLEVEL}  %{ZMPROGRAM} %{ZMCLIENT} security - %{ZMCOMMAND};( %{ZMCOMMAND_PARAMS})?
+
+
+# mailbox.log
+ZMMAILBOX %{TIMESTAMP_ISO8601:created_at} %{ZMLOGLEVEL}  %{ZMPROGRAM} %{ZMCLIENT} %{WORD:protocol} - %{DATA:command} elapsed=%{NUMBER:elapsed}

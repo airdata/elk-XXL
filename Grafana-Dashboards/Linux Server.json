@@ -1,0 +1,956 @@
+{
+  "id": 16,
+  "title": "Template Linux Server",
+  "tags": [
+    "zabbix",
+    "example"
+  ],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 268.3999938964844,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 5,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6.058378202421171,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "application": {
+                "filter": "Memory"
+              },
+              "functions": [],
+              "group": {
+                "filter": "Linux servers"
+              },
+              "host": {
+                "filter": "backup"
+              },
+              "item": {
+                "filter": "/mem/"
+              },
+              "mode": 0,
+              "options": {
+                "showDisabledItems": false
+              },
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "CPU iowait time": "#B7DBAB",
+            "CPU system time": "#BF1B00",
+            "CPU user time": "#EAB839"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 3,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 5.941621797578829,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "application": {
+                "filter": "CPU"
+              },
+              "functions": [],
+              "group": {
+                "filter": "$group"
+              },
+              "host": {
+                "filter": "$host"
+              },
+              "item": {
+                "filter": "/CPU/"
+              },
+              "mode": 0,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "logBase": 1,
+              "max": 100,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "CPU"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 245.26666259765625,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 3,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 3,
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "minSpan": 4,
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": "netif",
+          "scopedVars": {
+            "netif": {
+              "selected": true,
+              "text": "docker0",
+              "value": "docker0"
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "/Incoming/",
+              "transform": "negative-Y"
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "application": {
+                "filter": ""
+              },
+              "functions": [],
+              "group": {
+                "filter": "$group"
+              },
+              "host": {
+                "filter": "$host"
+              },
+              "item": {
+                "filter": "/$netif/"
+              },
+              "mode": 0,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network traffic on $netif",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bps",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Processor load (1 min average per core)": "#1F78C1"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 2,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 5.858018369932433,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "application": {
+                "filter": "CPU"
+              },
+              "functions": [],
+              "group": {
+                "filter": "$group"
+              },
+              "host": {
+                "filter": "$host"
+              },
+              "item": {
+                "filter": "Processor load (15 min average per core)"
+              },
+              "mode": 0,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "System load",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "Network"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "ackEventColor": "rgba(0, 0, 0, 0)",
+          "ageField": true,
+          "datasource": "default",
+          "editable": true,
+          "error": false,
+          "hostField": true,
+          "id": 4,
+          "infoField": true,
+          "isNew": true,
+          "lastChangeField": true,
+          "limit": 10,
+          "links": [],
+          "okEventColor": "rgba(0, 245, 153, 0.45)",
+          "severityField": false,
+          "showEvents": {
+            "text": "Problems",
+            "value": "1"
+          },
+          "showTriggers": "all triggers",
+          "sortTriggersBy": {
+            "text": "last change",
+            "value": "lastchange"
+          },
+          "span": 6,
+          "statusField": false,
+          "targets": [
+            {}
+          ],
+          "title": "Panel Title",
+          "triggerSeverity": [
+            {
+              "color": "#B7DBAB",
+              "priority": 0,
+              "severity": "Not classified",
+              "show": true
+            },
+            {
+              "color": "#82B5D8",
+              "priority": 1,
+              "severity": "Information",
+              "show": true
+            },
+            {
+              "color": "#E5AC0E",
+              "priority": 2,
+              "severity": "Warning",
+              "show": true
+            },
+            {
+              "color": "#C15C17",
+              "priority": 3,
+              "severity": "Average",
+              "show": true
+            },
+            {
+              "color": "#BF1B00",
+              "priority": 4,
+              "severity": "High",
+              "show": true
+            },
+            {
+              "color": "#890F02",
+              "priority": 5,
+              "severity": "Disaster",
+              "show": true
+            }
+          ],
+          "triggers": {
+            "application": {
+              "filter": ""
+            },
+            "group": {
+              "filter": ""
+            },
+            "host": {
+              "filter": ""
+            },
+            "trigger": {
+              "filter": ""
+            }
+          },
+          "type": "alexanderzobnin-zabbix-triggers-panel"
+        }
+      ],
+      "title": "New row"
+    }
+  ],
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {
+    "now": true,
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "3h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "allFormat": "regex values",
+        "current": {
+          "text": "Linux servers",
+          "value": "Linux servers"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Group",
+        "multi": false,
+        "multiFormat": "glob",
+        "name": "group",
+        "options": [
+          {
+            "selected": true,
+            "text": "Linux servers",
+            "value": "Linux servers"
+          },
+          {
+            "selected": false,
+            "text": "Zabbix servers",
+            "value": "Zabbix servers"
+          }
+        ],
+        "query": "*",
+        "refresh": 1,
+        "refresh_on_load": false,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allFormat": "glob",
+        "current": {
+          "text": "backup",
+          "value": "backup"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "multiFormat": "glob",
+        "name": "host",
+        "options": [
+          {
+            "selected": true,
+            "text": "backup",
+            "value": "backup"
+          },
+          {
+            "selected": false,
+            "text": "grafana",
+            "value": "grafana"
+          },
+          {
+            "selected": false,
+            "text": "jenkinx",
+            "value": "jenkinx"
+          },
+          {
+            "selected": false,
+            "text": "pfsense",
+            "value": "pfsense"
+          }
+        ],
+        "query": "$group.*",
+        "refresh": 1,
+        "refresh_on_load": false,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allFormat": "regex values",
+        "current": {
+          "tags": [],
+          "text": "docker0",
+          "value": [
+            "docker0"
+          ]
+        },
+        "datasource": null,
+        "hide": 0,
+        "hideLabel": false,
+        "includeAll": true,
+        "label": "Network interface",
+        "multi": true,
+        "multiFormat": "regex values",
+        "name": "netif",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "docker0",
+            "value": "docker0"
+          },
+          {
+            "selected": false,
+            "text": "em1",
+            "value": "em1"
+          },
+          {
+            "selected": false,
+            "text": "em2",
+            "value": "em2"
+          },
+          {
+            "selected": false,
+            "text": "veth0017c96",
+            "value": "veth0017c96"
+          },
+          {
+            "selected": false,
+            "text": "veth047a657",
+            "value": "veth047a657"
+          },
+          {
+            "selected": false,
+            "text": "veth05126ce",
+            "value": "veth05126ce"
+          },
+          {
+            "selected": false,
+            "text": "veth0778676",
+            "value": "veth0778676"
+          },
+          {
+            "selected": false,
+            "text": "veth07e1f59",
+            "value": "veth07e1f59"
+          },
+          {
+            "selected": false,
+            "text": "veth0adcd92",
+            "value": "veth0adcd92"
+          },
+          {
+            "selected": false,
+            "text": "veth16aa995",
+            "value": "veth16aa995"
+          },
+          {
+            "selected": false,
+            "text": "veth185cbb1",
+            "value": "veth185cbb1"
+          },
+          {
+            "selected": false,
+            "text": "veth1a93272",
+            "value": "veth1a93272"
+          },
+          {
+            "selected": false,
+            "text": "veth1a9a881",
+            "value": "veth1a9a881"
+          },
+          {
+            "selected": false,
+            "text": "veth1c21d3c",
+            "value": "veth1c21d3c"
+          },
+          {
+            "selected": false,
+            "text": "veth1e3f0b2",
+            "value": "veth1e3f0b2"
+          },
+          {
+            "selected": false,
+            "text": "veth239379f",
+            "value": "veth239379f"
+          },
+          {
+            "selected": false,
+            "text": "veth239618f",
+            "value": "veth239618f"
+          },
+          {
+            "selected": false,
+            "text": "veth2446492",
+            "value": "veth2446492"
+          },
+          {
+            "selected": false,
+            "text": "veth343c85e",
+            "value": "veth343c85e"
+          },
+          {
+            "selected": false,
+            "text": "veth398bd2b",
+            "value": "veth398bd2b"
+          },
+          {
+            "selected": false,
+            "text": "veth4420d2f",
+            "value": "veth4420d2f"
+          },
+          {
+            "selected": false,
+            "text": "veth488910e",
+            "value": "veth488910e"
+          },
+          {
+            "selected": false,
+            "text": "veth4e1ad0d",
+            "value": "veth4e1ad0d"
+          },
+          {
+            "selected": false,
+            "text": "veth5922755",
+            "value": "veth5922755"
+          },
+          {
+            "selected": false,
+            "text": "veth59f0da6",
+            "value": "veth59f0da6"
+          },
+          {
+            "selected": false,
+            "text": "veth5c3e987",
+            "value": "veth5c3e987"
+          },
+          {
+            "selected": false,
+            "text": "veth629eec9",
+            "value": "veth629eec9"
+          },
+          {
+            "selected": false,
+            "text": "veth693ac0f",
+            "value": "veth693ac0f"
+          },
+          {
+            "selected": false,
+            "text": "veth74a4d6f",
+            "value": "veth74a4d6f"
+          },
+          {
+            "selected": false,
+            "text": "veth804d773",
+            "value": "veth804d773"
+          },
+          {
+            "selected": false,
+            "text": "veth811ec78",
+            "value": "veth811ec78"
+          },
+          {
+            "selected": false,
+            "text": "veth81a99c5",
+            "value": "veth81a99c5"
+          },
+          {
+            "selected": false,
+            "text": "veth84d9ec6",
+            "value": "veth84d9ec6"
+          },
+          {
+            "selected": false,
+            "text": "veth8962764",
+            "value": "veth8962764"
+          },
+          {
+            "selected": false,
+            "text": "veth8a6852f",
+            "value": "veth8a6852f"
+          },
+          {
+            "selected": false,
+            "text": "veth9d4470f",
+            "value": "veth9d4470f"
+          },
+          {
+            "selected": false,
+            "text": "veth9d6d097",
+            "value": "veth9d6d097"
+          },
+          {
+            "selected": false,
+            "text": "veth9d97808",
+            "value": "veth9d97808"
+          },
+          {
+            "selected": false,
+            "text": "vetha6a6930",
+            "value": "vetha6a6930"
+          },
+          {
+            "selected": false,
+            "text": "vethaf66e9c",
+            "value": "vethaf66e9c"
+          },
+          {
+            "selected": false,
+            "text": "vethb7e0fce",
+            "value": "vethb7e0fce"
+          },
+          {
+            "selected": false,
+            "text": "vethba374be",
+            "value": "vethba374be"
+          },
+          {
+            "selected": false,
+            "text": "vethbc5b5a9",
+            "value": "vethbc5b5a9"
+          },
+          {
+            "selected": false,
+            "text": "vethbe97cfe",
+            "value": "vethbe97cfe"
+          },
+          {
+            "selected": false,
+            "text": "vethbf98b62",
+            "value": "vethbf98b62"
+          },
+          {
+            "selected": false,
+            "text": "vethc1d9ad4",
+            "value": "vethc1d9ad4"
+          },
+          {
+            "selected": false,
+            "text": "vethc3bfe4c",
+            "value": "vethc3bfe4c"
+          },
+          {
+            "selected": false,
+            "text": "vethcb3c718",
+            "value": "vethcb3c718"
+          },
+          {
+            "selected": false,
+            "text": "vethcdb7455",
+            "value": "vethcdb7455"
+          },
+          {
+            "selected": false,
+            "text": "vethd0dd248",
+            "value": "vethd0dd248"
+          },
+          {
+            "selected": false,
+            "text": "vethd1732f9",
+            "value": "vethd1732f9"
+          },
+          {
+            "selected": false,
+            "text": "vethd198e28",
+            "value": "vethd198e28"
+          },
+          {
+            "selected": false,
+            "text": "vethd1e28e8",
+            "value": "vethd1e28e8"
+          },
+          {
+            "selected": false,
+            "text": "vethd2e9959",
+            "value": "vethd2e9959"
+          },
+          {
+            "selected": false,
+            "text": "vethd7ac5a4",
+            "value": "vethd7ac5a4"
+          },
+          {
+            "selected": false,
+            "text": "vethdb04b6e",
+            "value": "vethdb04b6e"
+          },
+          {
+            "selected": false,
+            "text": "vethe244f99",
+            "value": "vethe244f99"
+          },
+          {
+            "selected": false,
+            "text": "vethe3406f2",
+            "value": "vethe3406f2"
+          },
+          {
+            "selected": false,
+            "text": "vethec3b6a8",
+            "value": "vethec3b6a8"
+          },
+          {
+            "selected": false,
+            "text": "vethef816c5",
+            "value": "vethef816c5"
+          },
+          {
+            "selected": false,
+            "text": "vethf5fc2ce",
+            "value": "vethf5fc2ce"
+          },
+          {
+            "selected": false,
+            "text": "vethf85b90d",
+            "value": "vethf85b90d"
+          },
+          {
+            "selected": false,
+            "text": "vethf8a01bb",
+            "value": "vethf8a01bb"
+          },
+          {
+            "selected": false,
+            "text": "vethf97a904",
+            "value": "vethf97a904"
+          },
+          {
+            "selected": false,
+            "text": "vethfa457e8",
+            "value": "vethfa457e8"
+          }
+        ],
+        "query": "*.$host.Network interfaces.*",
+        "refresh": 1,
+        "refresh_on_load": false,
+        "regex": "/(?:Incoming|Outgoing) network traffic on (.*)/",
+        "type": "query"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 12,
+  "version": 2,
+  "links": [],
+  "gnetId": null
+}

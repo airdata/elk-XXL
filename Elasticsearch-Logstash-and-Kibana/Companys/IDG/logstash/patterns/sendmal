@@ -1,0 +1,44 @@
+LOGIN [.a-zA-Z0-9_-]+
+QID [A-za-z0-9]{14}
+EMAIL %{LOGIN}@%{IPORHOST}
+DSN [0-9][.][0-9][.][0-9]
+
+# Define statuses here
+STAT_1 \(%{GREEDYDATA:result_message}\)
+STAT_2 %{GREEDYDATA:result_message}
+STAT (%{STAT_1}|%{STAT_2})
+
+# Match a relay that gives us a QID in the return result.
+SENDMAIL_TO_1 %{SYSLOGBASE} %{QID:qid}: to=(<?)%{EMAIL:to}(>?), (%{WORD}=%{DATA},)+ relay=%{IPORHOST:relay} \[%{IP}\], dsn=%{DSN:dsn}, stat=(%{DATA:result}|User unknown) \(%{QID} %{STAT}\)
+
+# Match a relay that does NOT give us a QID in the return result.
+SENDMAIL_TO_2 %{SYSLOGBASE} %{QID:qid}: to=(<?)%{EMAIL:to}(>?), (%{WORD}=%{DATA},)+ relay=%{IPORHOST:relay} \[%{IP}\], dsn=%{DSN:dsn}, stat=(%{DATA:result}|User unknown) %{STAT}
+
+# Match a message with no relay IP address or result message.
+SENDMAIL_TO_3 %{SYSLOGBASE} %{QID:qid}: to=(<?)%{EMAIL:to}(>?), (%{WORD}=%{DATA},)+ relay=%{IPORHOST:relay}, dsn=%{DSN:dsn}, stat=(%{DATA:result}|User unknown) %{STAT}
+
+# Match a message with no relay info at all.
+SENDMAIL_TO_4 %{SYSLOGBASE} %{QID:qid}: to=(<?)%{EMAIL:to}(>?), (%{WORD}=%{DATA},)+ dsn=%{DSN:dsn}, stat=%{GREEDYDATA:result}
+
+### TODO - match multiple recipients in To: field.
+#SENDMAIL_TO_5 %{SYSLOGBASE} %{QID:qid}: to=(<%{EMAIL:to}>,)+ (%{WORD}=%{DATA},)+ %{GREEDYDATA:result}
+
+SENDMAIL_TO (%{SENDMAIL_TO_1}|%{SENDMAIL_TO_2}|%{SENDMAIL_TO_3}|%{SENDMAIL_TO_4})
+
+SENDMAIL_FROM %{SYSLOGBASE} %{QID:qid}: from=<%{EMAIL:from}>, (%{WORD}=%{DATA},)+ relay=%{IPORHOST:relay} \[%{IP}\]
+
+SENDMAIL_OTHER_1 %{SYSLOGBASE} %{QID:qid}: %{GREEDYDATA:message}
+SENDMAIL_OTHER_2 %{SYSLOGBASE} STARTTLS=(client|server), relay=(\[)?%{IPORHOST:relay}(\])?%{GREEDYDATA:message}
+SENDMAIL_OTHER_3 %{SYSLOGBASE} STARTTLS= %{GREEDYDATA:message}
+SENDMAIL_OTHER_4 %{SYSLOGBASE} ruleset=tls_server, arg1=SOFTWARE, relay=%{IPORHOST:relay}, %{GREEDYDATA:message}
+SENDMAIL_OTHER_5 %{SYSLOGBASE} STARTTLS=client, error: %{GREEDYDATA:message}
+
+SENDMAIL_RELAY %{SYSLOGBASE} ruleset=check_relay, arg1=(\[)?%{IPORHOST}(\])?, arg2=%{IP:ip}, relay=(\[)?%{IPORHOST:relay}(\])??%{GREEDYDATA:message}
+
+SENDMAIL_AUTH_1 %{SYSLOGBASE} AUTH=server, relay=%{IPORHOST:relay} \[%{IP}\]( \(may be forged\))?, authid=%{LOGIN:user}(@%{IPORHOST})?, %{GREEDYDATA:message}
+SENDMAIL_AUTH_2 %{SYSLOGBASE} AUTH=server, relay=\[%{IP}\], authid=%{LOGIN:user}(@%{IPORHOST})?, %{GREEDYDATA:message}
+SENDMAIL_AUTH (%{SENDMAIL_AUTH_1}|%{SENDMAIL_AUTH_2})
+
+SENDMAIL_OTHER (%{SENDMAIL_OTHER_1}|%{SENDMAIL_OTHER_2}|%{SENDMAIL_OTHER_3}|%{SENDMAIL_OTHER_4}|%{SENDMAIL_OTHER_5})
+
+SENDMAIL (%{SENDMAIL_TO}|%{SENDMAIL_FROM}|%{SENDMAIL_OTHER}|%{SENDMAIL_AUTH}|%{SENDMAIL_RELAY})
