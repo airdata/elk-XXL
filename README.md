@@ -1,9 +1,9 @@
 Make you shure the content of the 
-
- /opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.7.1-java/lib/logstash/outputs/elasticsearch/elasticsearch-template.json
-
+```
+/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-output-elasticsearch-2.7.1-java/lib/logstash/outputs/elasticsearch/elasticsearch-template.json
+```
 is 
-
+```
    {
       "template" : "logstash-*",
       "settings" : {
@@ -100,3 +100,4 @@ is
         }
       }
     }
+```
