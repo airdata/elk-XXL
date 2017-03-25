@@ -1,1 +1,0 @@
-SAMBAFILES (?:%{GREEDYDATA:file_start}:%{GREEDYDATA:file_end}|%{GREEDYDATA:file_position})

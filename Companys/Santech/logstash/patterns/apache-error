@@ -1,4 +1,0 @@
-APACHE_ERROR_TIME %{DAY} %{MONTH} %{MONTHDAY} %{TIME} %{YEAR}
-APACHE_ERROR_LOG \[%{APACHE_ERROR_TIME:apache_error_timestamp}\] \[%{LOGLEVEL:apache_error_loglevel}\] (?:\[client %{IPORHOST:apache_error_client_ip}\] ){0,1}%{GREEDYDATA:apache_error_message}
-
-
