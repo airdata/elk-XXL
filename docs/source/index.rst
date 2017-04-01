@@ -1,20 +1,34 @@
-.. elx-XXL documentation master file, created by
-   sphinx-quickstart on Sun Mar 26 04:56:57 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Welcome to elk-XXL
+========================
 
-Welcome to elx-XXL's documentation!
-===================================
+`elk-XXL`_ is a compilation of filters of Logstash_, tweak and configuration for elk_.
+.. _Elasticsearch: https://www.elastic.co/products/elasticsearch
+.. _Logstash: https://www.elastic.co/products/logstash
+.. _Kibana: https://www.elastic.co/products/kibana
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+We support elasticstack_ docs written with reStructuredText_ and `CommonMark`_.
+We pull your code from your Subversion_, Bazaar_, Git_, and Mercurial_ repositories.
+Then we build documentation and host it for you.
+Think of it as *Continuous Documentation*.
+
+The code is open source, and `available on GitHub`_.
 
 
+.. _CommonMark: http://commonmark.org/
+.. _Markdown: http://daringfireball.net/projects/markdown/syntax
+.. _Subversion: http://subversion.tigris.org/
+.. _Bazaar: http://bazaar.canonical.com/
+.. _Git: http://git-scm.com/
+.. _Mercurial: https://www.mercurial-scm.org/
+.. _available on GitHub: http://github.com/rtfd/readthedocs.org
 
-Indices and tables
-==================
+The main documentation for the site is organized into a couple sections:
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+* :ref:`user-docs`
+* :ref:`feature-docs`
+* :ref:`about-docs`
+
+Information about development is also available:
+
+* :ref:`dev-docs`
+* :ref:`design-docs`
