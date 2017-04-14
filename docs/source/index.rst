@@ -1,9 +1,9 @@
 
-                                    ========================
-                                      Welcome to elk-XXL
-                                    ========================
+========================
+elk-XXL Documentation
+========================
 
- This is a compilation of filters of Logstash_, tweak and configuration for elk_.
+This is a compilation of filters and tweaks of Logstash_ Elasticsarch_ and Kibana.
 .. _Elasticsearch: https://www.elastic.co/products/elasticsearch
 .. _Logstash: https://www.elastic.co/products/logstash
 .. _Kibana: https://www.elastic.co/products/kibana
