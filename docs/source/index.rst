@@ -1,12 +1,13 @@
 
 ========================
-elk-XXL Documentation
+elk-XXL - Documentation
 ========================
 
-This is a compilation of filters and tweaks of Logstash_ Elasticsarch_ and Kibana.
-.. _Elasticsearch: https://www.elastic.co/products/elasticsearch
-.. _Logstash: https://www.elastic.co/products/logstash
-.. _Kibana: https://www.elastic.co/products/kibana
+# Info
+This is a compilation of filters and tweaks of
+  * 'Logstash_'
+  * 'Elasticsearch_'
+  * 'Kibana_'
 
 We support elasticstack_ docs written with reStructuredText_ and `CommonMark`_.
 We pull your code from your Subversion_, Bazaar_, Git_, and Mercurial_ repositories.
@@ -15,7 +16,9 @@ Think of it as *Continuous Documentation*.
 
 The code is open source, and `available on GitHub`_.
 
-
+.. _Elasticsearch: https://www.elastic.co/products/elasticsearch
+.. _Logstash: https://www.elastic.co/products/logstash
+.. _Kibana: https://www.elastic.co/products/kibana
 .. _CommonMark: http://commonmark.org/
 .. _Markdown: http://daringfireball.net/projects/markdown/syntax
 .. _Subversion: http://subversion.tigris.org/
