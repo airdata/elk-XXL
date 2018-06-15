@@ -1,0 +1,87 @@
+input {
+    udp {
+        port => 5000
+        type => log4net
+        add_field => {
+            inf => "servers"
+        }
+        codec => plain {
+            charset => "UTF-8"
+        }
+    }
+}
+
+filter {
+    if [type] == "log4net" {
+        grok {
+            break_on_match => true
+            remove_field => message
+            match => {
+                message => "(?m)%{TIMESTAMP_ISO8601:server_timestamp} \[%{NUMBER:thread_id}\] %{LOGLEVEL:_log_level} +- %{IPORHOST:tempHost}- %{GREEDYDATA:tempMessage}((\r\n)|(\n))(?<exception_type>(((%{JAVACLASS})|(System.))Exception)): (?<exception_message>(%{GREEDYDATA}))((\r\n)|(\n))(?<stack_trace>(( )+at %{GREEDYDATA}))"
+            }
+            match => {
+                message => "(?m)%{TIMESTAMP_ISO8601:server_timestamp} \[%{NUMBER:thread_id}\] %{LOGLEVEL:_log_level} +- %{IPORHOST:tempHost} - %{GREEDYDATA:tempMessage}((\r\n)|(\n))(?<exception_type>(((%{JAVACLASS})|(System.))Exception)): (?<exception_message>(%{GREEDYDATA}))"
+            }
+            match => {
+                message => "(?m)%{TIMESTAMP_ISO8601:server_timestamp} \[%{NUMBER:thread_id}\] %{LOGLEVEL:_log_level} +- %{IPORHOST:tempHost} - %{GREEDYDATA:tempMessage}"
+            }
+        }
+
+        if !("_grokparsefailure" in [tags]) {
+            mutate {
+                replace => ["message", "%{tempMessage}"]
+                replace => ["host", "%{tempHost}"]
+                remove_field => ["tempMessage"]
+                remove_field => ["tempHost"]
+            }
+        }
+
+        # mutate {
+        #     gsub => ["message", "\\r", ""]
+        # }
+        # mutate {
+        #     gsub => ["message", "\\n", ""]
+        # }
+        # mutate{
+        #     gsub => ["message","[\\]{1}",""]
+        # }
+        
+        mutate {
+            rename => { "message" => "raw_message" }
+        }
+
+        json {
+            source => "raw_message"
+        }
+
+        mutate {
+            rename => [ "[Caller][File]", "_log_called_file" ]
+            rename => [ "[Caller][Member]", "_log_called_method" ]
+            rename => [ "[Caller][Line]", "_log_called_line" ]
+        }
+
+        mutate {
+            rename => { "Application" => "application" }
+            rename => { "Message" => "message" }
+            rename => { "Exception" => "raw_exception" }
+        }
+
+        mutate {
+            remove_field => [ "Level" ]
+            remove_field => [ "Date" ]
+            remove_field => [ "raw_exception" ]
+        }
+    } 
+}
+
+output {
+    if [inf] == "servers" {
+        stdout { 
+            codec => rubydebug 
+        }
+        elasticsearch {
+            index => "servers"
+            hosts => "elasticsearch:9200"
+        }
+    }
+}
