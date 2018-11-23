@@ -1,0 +1,73 @@
+#=========================== Filebeat inputs =============================
+
+filebeat.inputs:
+
+# Input for Admintool Apache SSL logs
+- type: log
+  paths:
+    - /var/log/httpd/ssl_request_log
+  tail_files: true
+  close_inactive: 60m
+  fields:
+    system: admintool
+    server: apache
+    protocol: https
+    logtype: ssl
+
+# Input for Admintool Apache non-SSL logs
+- type: log
+  paths:
+    - /var/log/httpd/access_log
+    - /var/log/httpd/ssl_access_log
+    - /var/log/httpd/*.ssl.log
+    - /var/log/httpd/*access*
+  tail_files: true
+  close_inactive: 60m
+  fields:
+    system: admintool
+    server: apache
+    protocol: http
+    logtype: combined
+
+# Input for Admintool Apache non-SSL error logs
+- type: log
+  paths:
+    - /var/log/httpd/error_log
+    - /var/log/httpd/*error*
+  tail_files: true
+  close_inactive: 60m
+  fields:
+    system: admintool
+    server: apache
+    protocol: http
+    logtype: errorlog
+
+# Input for Admintool Apache SSL error logs
+- type: log
+  paths:
+    - /var/log/httpd/ssl_error_log
+  tail_files: true
+  close_inactive: 60m
+  fields:
+    system: admintool
+    server: apache
+    protocol: https
+logtype: errorlog
+
+#==================== Elasticsearch template setting ==========================
+
+setup.template.settings:
+  index.number_of_shards: 3
+  #index.codec: best_compression
+  #_source.enabled: false
+
+#============================== Kibana =====================================
+setup.kibana:
+#============================= Elastic Cloud ==================================
+
+cloud.id: "user:?????????"
+cloud.auth: "elastic:???????????????"
+#-------------------------- Elasticsearch output ------------------------------
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["localhost:9200"]
