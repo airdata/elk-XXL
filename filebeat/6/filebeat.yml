@@ -20,7 +20,7 @@ filebeat.inputs:
     - /var/log/httpd/access_log
     - /var/log/httpd/ssl_access_log
     - /var/log/httpd/*.ssl.log
-    - /var/log/httpd/*access*
+    - /var/log/httpd/*access.log
   tail_files: true
   close_inactive: 60m
   fields:
@@ -33,7 +33,7 @@ filebeat.inputs:
 - type: log
   paths:
     - /var/log/httpd/error_log
-    - /var/log/httpd/*error*
+    - /var/log/httpd/*error.log
   tail_files: true
   close_inactive: 60m
   fields:
