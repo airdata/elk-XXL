@@ -1,0 +1,85 @@
+input {
+  udp {
+    host => "127.0.0.1"
+    port => 10514
+    codec => "json"
+    type => "rsyslog"
+  }
+  file {  
+     path => "/EFS/**/iaplog.log" 
+     start_position => "beginning" 
+     sincedb_path => "/dev/null" 
+     type => "filelog"
+  } 
+  beats {
+    port => "5044"
+ }
+}
+filter{
+  if [type] == "filelog" {
+    grok {
+    patterns_dir => "/etc/logstash/patterns"
+    match => [
+        "message", "%{SUCCESS_ACC}",
+        "message", "%{SUCCESS_ACC2}",
+	    "message", "%{COMPLETE_ACC}",
+	    "message", "%{FAILED_ACC}",
+	    "message", "%{FAILED_ACC2}"  
+    ]
+   }
+    date {
+     match => [ "timestamp_unix", "UNIX" ]
+    }
+   mutate { 
+     remove_field => [ 
+	"_id",
+	"_type",
+	"_score",
+	"@version"
+	] 
+   }
+ }
+}
+filter{
+ if [fields][type] == "chatlog" {
+  grok {
+    match => {
+		"message" => "%{CISCOTIMESTAMP:syslog_timestamp},%{USERNAME:User},%{UUID:UserID},%{GREEDYDATA:Chat},%{GREEDYDATA:ChatMessage}"
+	}
+  }
+  date {
+    match => ["syslog_timestamp", "MMM dd HH:mm:ss"]
+  }
+  mutate {  
+    remove_field => [
+        "syslog_timestamp",
+        "message",
+        "input_type",
+        "fields.log_type",
+        "beat.hostname",
+        "beat.name",
+        "host",
+        "input_type",
+        "offset",
+        "source",
+        "tags",
+        "type"
+    ]
+  }
+ }
+}
+output {
+ if [fields][type] == "chatlog" {
+   amazon_es {
+    hosts => ["search-b12es-gkz3xcywkiy3nb2owmfk55bkou.eu-west-1.es.amazonaws.com"]
+    region => 'eu-west-1'
+    index => "chatlog-%{+YYYY.MM.dd}"
+   }
+ }
+ else {
+  amazon_es {
+    hosts => ["search-b12es-gkz3xcywkiy3nb2owmfk55bkou.eu-west-1.es.amazonaws.com"]
+    region => 'eu-west-1'
+   }
+  }
+}
